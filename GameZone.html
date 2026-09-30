@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>گیم زونی | GameZone</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#0b1020;color:#fff}
+  a{text-decoration:none;color:inherit}
+  .hero{background:linear-gradient(135deg,#111936,#172b5c 55%,#0f172a);padding:28px 18px 24px;text-align:center}
+  .logo{font-size:34px;font-weight:900;color:#60a5fa}
+  .sub{color:#cbd5e1;margin-top:8px}
+  .nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .nav button,.search button{border:0;border-radius:12px;padding:11px 16px;background:#1e293b;color:#fff;cursor:pointer}
+  .nav button:hover,.search button:hover{background:#2563eb}
+  .wrap{max-width:1050px;margin:auto;padding:20px}
+  .search{display:flex;gap:8px;margin-bottom:20px}
+  .search input{flex:1;padding:13px;border-radius:12px;border:1px solid #334155;background:#111827;color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{background:#111827;border:1px solid #263449;border-radius:18px;padding:18px;transition:.2s}
+  .card:hover{transform:translateY(-3px);border-color:#3b82f6}
+  .icon{font-size:42px}
+  .card h3{margin:10px 0 8px}
+  .card p{color:#94a3b8;line-height:1.8}
+  .tag{display:inline-block;background:#172554;color:#93c5fd;border-radius:20px;padding:5px 9px;font-size:12px;margin:2px}
+  .section{margin:28px 0}
+  .section h2{font-size:24px}
+  .notice{background:linear-gradient(135deg,#172554,#1e3a8a);padding:20px;border-radius:18px}
+  footer{text-align:center;color:#64748b;padding:30px 10px}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="logo">🎮 گیم زونی</div>
+  <div class="sub">دنیای بازی‌ها، اخبار، معرفی و سرگرمی</div>
+  <nav class="nav">
+    <button onclick="showAll()">خانه</button>
+    <button onclick="filterGames('Xbox')">Xbox</button>
+    <button onclick="filterGames('PlayStation')">PlayStation</button>
+    <button onclick="filterGames('PC')">PC</button>
+    <button onclick="filterGames('Mobile')">موبایل</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section class="section">
+    <div class="notice">
+      <h2>🔥 به گیم زونی خوش اومدی!</h2>
+      <p>بازی موردنظرت رو پیدا کن، معرفی بازی‌ها رو ببین و از دنیای گیم لذت ببر.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="search">
+      <input id="search" type="text" placeholder="اسم بازی را جستجو کن..." oninput="searchGames()">
+      <button onclick="searchGames()">جستجو</button>
+    </div>
+    <div id="games" class="grid"></div>
+  </section>
+</main>
+
+<footer>© 2026 GameZone — ساخته شده برای گیمرها 🎮</footer>
+
+<script>
+const games = [
+  {name:"GTA V", platform:"Xbox", icon:"🚗", desc:"جهان‌باز، رانندگی و مأموریت‌های هیجان‌انگیز."},
+  {name:"Forza Horizon", platform:"Xbox", icon:"🏎️", desc:"رانندگی در دنیایی بزرگ با ماشین‌های متنوع."},
+  {name:"Red Dead Redemption 2", platform:"Xbox", icon:"🤠", desc:"ماجراجویی داستانی در دنیای غرب وحشی."},
+  {name:"Minecraft", platform:"PC", icon:"⛏️", desc:"ساخت‌وساز، بقا و ماجراجویی."},
+  {name:"FC 26", platform:"PlayStation", icon:"⚽", desc:"فوتبال و رقابت با تیم‌های مختلف."},
+  {name:"CarX Street", platform:"Mobile", icon:"🏁", desc:"رانندگی آزاد و مسابقه‌ای روی موبایل."},
+  {name:"Call of Duty", platform:"PlayStation", icon:"🎯", desc:"اکشن و تیراندازی پرهیجان."},
+  {name:"SnowRunner", platform:"Xbox", icon:"🚙", desc:"رانندگی آفرودی در مسیرهای سخت."}
+];
+
+function render(list){
+  const box=document.getElementById("games");
+  box.innerHTML=list.map(g=>`
+    <article class="card">
+      <div class="icon">${g.icon}</div>
+      <h3>${g.name}</h3>
+      <span class="tag">${g.platform}</span>
+      <p>${g.desc}</p>
+    </article>
+  `).join("");
+}
+function showAll(){render(games)}
+function filterGames(platform){render(games.filter(g=>g.platform===platform))}
+function searchGames(){
+  const q=document.getElementById("search").value.trim().toLowerCase();
+  render(games.filter(g=>g.name.toLowerCase().includes(q)||g.platform.toLowerCase().includes(q)));
+}
+showAll();
+</script>
+</body>
+</html>
