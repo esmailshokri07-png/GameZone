@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>گیم زونی | GameZone</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0f19;
+      color: white;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111827, #1e293b);
+      padding: 25px 15px;
+      text-align: center;
+      border-bottom: 2px solid #374151;
+    }
+
+    header h1 {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #a5b4fc;
+      font-size: 16px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 15px;
+      background: #111827;
+    }
+
+    nav button {
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    nav button:hover {
+      background: #1d4ed8;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: radial-gradient(circle at center, #1e3a8a, #0b0f19 65%);
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #d1d5db;
+      margin-bottom: 25px;
+    }
+
+    .start-btn {
+      display: inline-block;
+      background: #22c55e;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 27px;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .game {
+      background: #111827;
+      border: 1px solid #263244;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .game:hover {
+      transform: translateY(-5px);
+      border-color: #3b82f6;
+    }
+
+    .game .icon {
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    .game h3 {
+      margin-bottom: 10px;
+    }
+
+    .game p {
+      color: #9ca3af;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .game button {
+      background: #3b82f6;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .game button:hover {
+      background: #2563eb;
+    }
+
+    .about {
+      background: #111827;
+      border-radius: 18px;
+      padding: 25px;
+      margin-top: 35px;
+      text-align: center;
+      line-height: 2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+      background: #080c14;
+      color: #9ca3af;
+    }
+
+    #message {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #22c55e;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🎮 گیم زونی</h1>
+    <p>دنیای بازی‌ها در یک جا</p>
+  </header>
+
+  <nav>
+    <button onclick="showHome()">خانه</button>
+    <button onclick="showGames()">بازی‌ها</button>
+    <button onclick="showAbout()">درباره ما</button>
+  </nav>
+
+  <section class="hero">
+    <h2>به گیم زونی خوش اومدی 🎮🔥</h2>
+    <p>اینجا قراره دنیای بازی‌ها رو با هم کشف کنیم!</p>
+    <a href="#games" class="start-btn">شروع کنیم 🚀</a>
+  </section>
+
+  <main class="container" id="games">
+
+    <h2 class="section-title">🔥 بازی‌های محبوب</h2>
+
+    <div class="games">
+
+      <div class="game">
+        <div class="icon">🚗</div>
+        <h3>GTA V</h3>
+        <p>دنیای آزاد، ماشین‌ها و ماجراجویی</p>
+        <button onclick="playGame('GTA V')">مشاهده</button>
+      </div>
+
+      <div class="game">
+        <div class="icon">⚽</div>
+        <h3>FC 26</h3>
+        <p>تجربه فوتبال و رقابت با دوستان</p>
+        <button onclick="playGame('FC 26')">مشاهده</button>
+      </div>
+
+      <div class="game">
+        <div class="icon">🧱</div>
+        <h3>Minecraft</h3>
+        <p>ساختن، کشف کردن و ماجراجویی</p>
+        <button onclick="playGame('Minecraft')">مشاهده</button>
+      </div>
+
+      <div class="game">
+        <div class="icon">🏎️</div>
+        <h3>Forza Horizon</h3>
+        <p>مسابقات ماشینی در دنیایی بزرگ</p>
+        <button onclick="playGame('Forza Horizon')">مشاهده</button>
+      </div>
+
+      <div class="game">
+        <div class="icon">🔫</div>
+        <h3>Call of Duty</h3>
+        <p>نبردهای هیجان‌انگیز و رقابتی</p>
+        <button onclick="playGame('Call of Duty')">مشاهده</button>
+      </div>
+
+      <div class="game">
+        <div class="icon">🦸</div>
+        <h3>Marvel</h3>
+        <p>قهرمان‌ها و ماجراجویی‌های مارول</p>
+        <button onclick="playGame('Marvel')">مشاهده</button>
+      </div>
+
+    </div>
+
+    <div class="about" id="about">
+      <h2>ℹ️ درباره گیم زونی</h2>
+      <p>
+        گیم زونی یک سایت گیمینگ برای معرفی بازی‌ها،
+        اخبار و دنیای جذاب بازی‌های ویدیویی است.
+      </p>
+    </div>
+
+  </main>
+
+  <div id="message"></div>
+
+  <footer>
+    🎮 گیم زونی | ساخته شده برای گیمرها ❤️
+  </footer>
+
+  <script>
+    function playGame(name) {
+      const message = document.getElementById("message");
+      message.innerText = "🎮 صفحه " + name + " به‌زودی آماده می‌شود!";
+      message.style.display = "block";
+
+      setTimeout(function() {
+        message.style.display = "none";
+      }, 2500);
+    }
+
+    function showHome() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function showGames() {
+      document.getElementById("games").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function showAbout() {
+      document.getElementById("about").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  </script>
+
+</body>
+</html>
